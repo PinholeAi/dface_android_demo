@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最小人脸: " />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/gatherEtMinFaceSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="40"
+            android:inputType="number"
+            android:text="40" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="线程数(1,2,4,8): " />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/gatherEtThreadsNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="4"
+            android:inputType="number"
+            android:text="4" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/buttonImageGather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选图" />
+        <Button
+            android:id="@+id/buttonGather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="检测" />
+        <!--<ToggleButton-->
+        <!--android:id="@+id/toggle_bt"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:button="@drawable/toggle_btn"-->
+        <!--android:checked="false"-->
+        <!--android:text="只检测最大人脸："-->
+        <!--android:textOff="只检测最大人脸：关"-->
+        <!--android:textOn="只检测最大人脸：开" />-->
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/gatherInfoResult"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <ImageView
+        android:id="@+id/gatherImageView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" />
+
+</LinearLayout>
