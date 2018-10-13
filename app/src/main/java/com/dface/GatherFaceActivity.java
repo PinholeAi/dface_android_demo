@@ -141,6 +141,11 @@ public class GatherFaceActivity extends Activity {
                 long timeDetectFace = System.currentTimeMillis();
                 //检测人脸
                 faceBboxs = dfaceD.detection(imgMat, true);
+                if(faceBboxs.isEmpty()){
+                    infoResult.setText("未检测到人脸");
+                    return;
+                }
+
                 timeDetectFace = System.currentTimeMillis() - timeDetectFace;
                 Log.i(TAG, "人脸检测耗时："+timeDetectFace);
 
@@ -151,6 +156,12 @@ public class GatherFaceActivity extends Activity {
                         faceRects.add(box.toRect());
                     }
                 }
+
+                //测试人脸质量可打开注释
+                //人脸光照质量判断
+//              int[] light_quality = dfaceG.predictLight(imgMat, faceRects);
+                //人脸清晰度判断
+//                double[] dfaceG.predictBlur(imgMat, faceRects);
 
                 long timeLandmarksFace = System.currentTimeMillis();
                 //3D姿态估计和68关键点
@@ -184,7 +195,7 @@ public class GatherFaceActivity extends Activity {
                         canvas.drawPoints(fPpoint, paint);//画多个点
                         //人脸3D姿态信息
                         double[] poses = fk.getPose3D();
-                        String strInfo = String.format("人脸%d姿态: yaw=%.2f, pitch=%.2f, roll=%.2f %n X=%.4f, Y=%.4f, Z=>%.4f %n",idx,poses[0],poses[1],poses[2],poses[3],poses[4],poses[5]);
+                        String strInfo = String.format("人脸%d姿态: yaw=%.2f, pitch=%.2f, roll=%.2f %n X=%.4f, Y=%.4f, Z=%.4f %n",idx,poses[0],poses[1],poses[2],poses[3],poses[4],poses[5]);
                         poseInfo = poseInfo+strInfo;
                         idx++;
                     }

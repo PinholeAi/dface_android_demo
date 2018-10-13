@@ -23,8 +23,14 @@ public class DfaceG {
      * 根据一张静态图片, 定位人脸68关键点和头部3D角度
      * @param img 图片数据,以DFaceMat格式输入
      * @param bboxs 人脸在图像中对应的边框信息
-     * @return 返回正脸世界坐标系的的旋转欧拉角和位置偏移量 例如(yaw,pitch,roll,t_x,t_y,t_z)
-     * yaw,pitch,roll: 分别表示头部的偏航角，俯仰角，滚转角  t_x, t_y, t_z: 分别表示头部相对于正脸世界坐标系原点的偏移量(坐标值)
+     * @return 返回人脸3D姿态角度信息 例如(yaw,pitch,roll,t_x,t_y,t_z)
+     * (yaw,pitch,roll,t_x,t_y,t_z) 详情查看《DFace用户手册.pdf》
+     * yaw(偏航角): 人脸朝向视角，向右转脸为正角度，向左转脸为负角度(单位角度数)
+     * pitch(俯仰角): 人脸朝向视角, 向下俯为正角度，向上仰为负角度(单位角度数)
+     * roll(滚转角): 人脸朝向视角，向右滚头为正，向左滚头为负(单位角度数)
+     * t_x: 摄像头为视角，向摄像头右方偏离为正，左方为负(单位米)
+     * t_y： 摄像头为视角，向摄像头上方偏离为正，下方为负(单位米)
+     * t_z： 摄像头为视角，偏离摄像头越远值越大，该值和摄像头焦距关系很大，实际生成环境需要设置好焦距参数
      * @note ()
      */
     public native List<FaceLandmark> predictPose(DFaceMat img, List<Rect> bboxs);
@@ -37,6 +43,16 @@ public class DfaceG {
      * note (正常人脸清晰度500以上，较模糊的人脸3清晰度在30~300之间)
      */
     public native double[] predictBlur(DFaceMat img, List<Rect> bboxs);
+
+
+    /**
+     * 判断人脸光照质量
+     * @param img 图片数据,以DFaceMat格式输入
+     * @param bboxs 人脸在图像中对应的边框信息
+     * @return 返回每个人脸对应的光照质量, 0:人脸光照正常 1:人脸光照太暗，曝光太少  2:人脸光照太亮，过度曝光
+     * note (0:人脸光照正常 1:人脸光照太暗，曝光太少  2:人脸光照太亮，过度曝光)
+     */
+    public native int[] predictLight(DFaceMat img, List<Rect> bboxs);
 
     /**
      * 预测人脸年龄
@@ -58,14 +74,12 @@ public class DfaceG {
 
     /**
      * 设置最小人脸尺寸
-     *
      * @param size 最小人脸尺寸
      */
     public native void SetMinFace(int size);
 
     /**
      * 设置最大人脸尺寸
-     *
      * @param size 最小人脸尺寸
      */
     public native void SetMaxFace(int size);

@@ -21,8 +21,8 @@ public class DfaceC {
 
     /**
      * 根据两个人脸特征数组，判断相似度
-     * @param feature_1 第一个特征数组
-     * @param feature_2 第二个特征数组
+     * @param feature_1 第一个人脸特征(512或者128个浮点数)
+     * @param feature_2 第二个人脸特征(512或者128个浮点数)
      * @return 返回相似度
      * @note  (相似度范围(0.0~1.0),值越大越相似)
      */
@@ -31,7 +31,7 @@ public class DfaceC {
 
     /**
      * 比较特征值数组(1:n)，返回有序相似度(该函数支持多线程高性能并行运算)
-     * @param feature_1 1个人脸人特征数组
+     * @param feature_1 1个人脸人特征(512或者128个浮点数)
      * @param feature_n n个人脸特征数组
      * @param top 返回前top个相似度 默认0表示返回所有
      * @param threshold 相似度阀值，只返回大于此阀值的相似度，默认0.0返回所有
@@ -44,7 +44,7 @@ public class DfaceC {
 
     /**
      * 比较特征值数组(1:n)，判断最大相似度
-     * @param feature_1 1个人脸人特征数组
+     * @param feature_1 1个人脸人特征(512或者128个浮点数)
      * @param feature_n n个人脸特征数组
      * @return 返回1:n的最大相似度
      * @note  (相似度范围(0.0~1.0),值越大越相似)
@@ -55,7 +55,7 @@ public class DfaceC {
 
     /**
      * 比较特征值数组(1:n)，判断相似度(该函数支持多线程高性能并行运算)
-     * @param feature_1 1个人脸人特征数组
+     * @param feature_1 1个人脸人特征(512或者128个浮点数)
      * @param feature_n n个人脸特征数组
      * @return 返回相似度数组
      * @note  (相似度范围(0.0~1.0),值越大越相似)

@@ -5,7 +5,7 @@ package com.dface.dto;
  */
 public class DFaceMat {
     /**
-     * @brief 图片数据byte数组
+     * @brief 图片数据byte数组,只支持RGBA或者RGB格式的数据，YUV格式需要自己转成以上两张图片格式
      */
     public byte[] data;
     /**

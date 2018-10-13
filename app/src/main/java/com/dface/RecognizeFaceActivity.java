@@ -165,14 +165,12 @@ public class RecognizeFaceActivity extends AppCompatActivity {
 
                 DFaceMat cropFace1 = dfaceD.cropFace(img1_mat, bbox1_lst.get(0));
                 DFaceMat cropFace2 = dfaceD.cropFace(img2_mat, bbox2_lst.get(0));
-
-
-                DFaceMat alignFace1 = dfaceD.alignFace(cropFace1);
-                DFaceMat alignFace2 = dfaceD.alignFace(cropFace2);
+//                DFaceMat alignFace1 = dfaceD.alignFace(cropFace1);
+//                DFaceMat alignFace2 = dfaceD.alignFace(cropFace2);
                 dfaceR.SetNumThreads(4);
                 long timeExtractFace = System.currentTimeMillis();
-                float[] feature1 = dfaceR.extractFaceFeatureByFace(alignFace1);
-                float[] feature2 = dfaceR.extractFaceFeatureByFace(alignFace2);
+                float[] feature1 = dfaceR.extractFaceFeatureByFace(cropFace1);
+                float[] feature2 = dfaceR.extractFaceFeatureByFace(cropFace2);
                 long durExtractTime = System.currentTimeMillis() - timeExtractFace;
 
 //                Random random = new Random();

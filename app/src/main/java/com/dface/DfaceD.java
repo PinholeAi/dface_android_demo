@@ -24,7 +24,7 @@ public class DfaceD {
     public native boolean uninitLoad();
 
     /**
-     * 检测图片所有的人脸参数，包括边框，五官定位，可信度
+     * 检测图片所有的人脸，返回边框，五官定位，可信度
      * @param img 图片数据,以Mat格式输入
      * @return 返回所有人脸边框信息数组
      * @note (当未检测到人脸，finalBbox为空List)
@@ -32,7 +32,7 @@ public class DfaceD {
     public native List<Bbox> detection(DFaceMat img, boolean square);
 
     /**
-     * 检测图片所有的人脸参数，包括边框，五官定位，可信度
+     * 检测图片所有的人脸，返回边框，五官定位，可信度
      * @param img_path 图片地址
      * @return 返回所有n个人脸边框信息数组
      * @note (当未检测到人脸，finalBbox为空列表)
@@ -50,7 +50,7 @@ public class DfaceD {
 
 
     /**
-     * 检测图片的最大人脸参数，包括边框，五官定位，可信度
+     * 检测图片的最大人脸，返回边框，五官定位，可信度
      * @param img 图片数据,以Mat格式输入
      * @return 参考finalBbox
      * @note (当未检测到人脸，finalBbox为空列表)
@@ -68,7 +68,7 @@ public class DfaceD {
 
 
     /**
-     * 裁剪对齐人脸
+     * 对齐人脸
      * @param face 被裁剪的人脸数据，人脸Size可任意
      * @return 参照out_face
      * @note (返回人脸 Size(112x112), 一般用于人脸识别通道特征提取和比对输入)
@@ -95,7 +95,7 @@ public class DfaceD {
 
 
     /**
-     * 裁剪人脸矩形框
+     * 裁剪人脸矩形框，从原图中抠出人脸图片
      * @param img 被裁剪的图片
      * @param rect 需要被裁剪的矩形区域
      * @return 返回的被裁剪人脸数据
@@ -105,7 +105,7 @@ public class DfaceD {
 
 
     /**
-     * 裁剪人脸矩形框
+     * 裁剪人脸矩形框，从原图中抠出人脸图片
      * @param img 被裁剪的图片
      * @param bbox 被检测到的人脸边框信息
      * @return 返回的被裁剪人脸数据
